@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block main %}
+{% load static %}
+<div class="container__all" id="container_all">
+
+    <div class="cover">
+
+        <div class="container__cover">
+
+            <div class="container__info">
+                <h1>BOY</h1>
+                <h2>FIESTAS</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis molestias minima itaque
+                    voluptatem. Consequatur accusantium repudiandae iure quis, maiores vero fuga quod. Harum, non.
+                    Earum cupiditate aspernatur esse nostrum aut.
+                </p>
+                <a href="login"><input type="button" value="Iniciar Sesion"></a>
+            </div>
+            <div class="container__vector">
+                <img src="{% static 'assets\img\Fiesta_imagen.png' %}" alt="">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="pic-ctn">
+    <img src="https://picsum.photos/200/300?t=1" alt="" class="pic">
+    <img src="https://picsum.photos/200/300?t=2" alt="" class="pic">
+    <img src="https://picsum.photos/200/300?t=3" alt="" class="pic">
+    <img src="https://picsum.photos/200/300?t=4" alt="" class="pic">
+    <img src="https://picsum.photos/200/300?t=5" alt="" class="pic">
+  </div>
+{% endblock %}
