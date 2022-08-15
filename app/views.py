@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.conf import settings
-from boyFiestas import Directions
-
+from boyFiestas.mixins import Directions
 
 def index(request):
     return render(request, 'index.html')
