@@ -50,7 +50,7 @@ def map(request):
 			long_d=long_d
 			)
 	else:
-		return redirect(reverse('main:route'))
+		return redirect(reverse('api:route'))
 
 	context = {
 	"google_api_key": settings.GOOGLE_API_KEY,
@@ -68,4 +68,4 @@ def map(request):
 	"directions": directions,
 
 	}
-	return render(request, 'map.html', context)
+	return render(request, 'api/map.html', context)

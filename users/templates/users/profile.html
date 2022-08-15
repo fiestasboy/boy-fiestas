@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Boy-Fiestas - Perfil del Usuario</h3>
+
+<div class="container">
+    {% if request.user.userprofile.has_profile %}
+    <table>
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Address</td>
+                <td>
+                    <address>
+                        {{request.user.userprofile.direccion}}<br>
+                        {{request.user.userprofile.ciudad}}<br>
+                        {{request.user.userprofile.departamento}}<br>
+                        {{request.user.userprofile.codigo_postal}}<br>
+                    </address>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </br>
+    <label for="id-google-address">Cambiar Dirección</label>
+    {% else %}
+    <label for="id-google-address">Agregar Dirección</label>
+    {% endif %}
+
+    <input type="text" placeholder="*Comience a escribir la dirección" id="id-google-address" name="google_address">
+
+    <form id="profileform" method="POST" action="/profile">
+        {% csrf_token %}
+
+        <label for="direccion" class="hidden-el" hidden>Dirección</label>
+        {{form.direccion}}
+
+        <label for="ciudad" class="hidden-el" hidden>Ciudad/Pueblo</label>
+        {{form.ciudad}}
+
+        <label for="departamento" class="hidden-el" hidden>County</label>
+        {{form.departamento}}
+
+        <label for="codigo_postal" class="hidden-el" hidden>Código Postal</label>
+        {{form.codigo_postal}}
+
+        <label for="pais" class="hidden-el" hidden>País</label>
+        {{form.country}}
+
+        <!-- Pendiente por revisar for longitud/latitud en lugar de codigo_postal/pais -->
+        <label for="longitud" class="hidden-el" hidden>Longitud</label>
+        {{form.longitude}}
+
+        <label for="latitud" class="hidden-el" hidden>Latitud</label>
+        {{form.latitude}}
+
+
+        <button disabled type="submit" id="profile-btn">Actualizar</button>
+    </form>
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+<script type="text/javascript">
+
+    var google_api_key = "{{google_api_key|safe}}";
+    var base_country = "{{base_country|safe}}";
+
+</script>
+
+<script src="{% static 'assets/js/google_places.js' %}"></script>
+
+
+{% endblock %}

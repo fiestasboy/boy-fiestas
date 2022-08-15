@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+
+{% endblock %}
+
+{% block content %}
+
+<h3>Boy-Fiestas - Registrarse</h3>
+
+<div class="container">
+
+
+  <form id="signupform" method="POST" action="/sign-up">
+    {% csrf_token %}
+
+
+    <label for="nombre">Nombre</label>
+    {{form.nombre}}
+
+    <label for="apellidos">Apellidos</label>
+    {{form.apellidos}}
+
+    <label for="nombre_de_usuario">Nombre de Usuario</label>
+    {{form.nombre_de_usuario}}
+
+    <label for="contraseña1">Contraseña</label>
+    {{form.contraseña1}}
+
+    <label for="contraseña2">Confirmar contraseña</label>
+    {{form.contraseña2}}
+
+    {{form.token}}
+
+    <label class="check-container">Mostrar contraseñas
+      <input type="checkbox" onclick="showPword()">
+      <span class="checkmark"></span>
+    </label>
+
+    <button type="submit">Registrarse</button>
+
+  </form>
+</div>
+
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+<script type="text/javascript">
+  // Crear una variable que pueda ser utilizada en main.js.
+  var recaptcha_site_key = '{{recaptcha_site_key|safe}}'
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Boy-Fiestas - Acceder a la página web</h3>
+
+<div class="container">
+
+  <form id="signinform" method="POST" action="/sign-in">
+    {% csrf_token %}
+    <label for="nombre_de_usuario">Nombre de Usuario</label>
+    {{form.nombre_de_usuario}}
+
+    <label for="contraseña">Contraseña</label>
+    {{form.contraseña}}
+
+    <label class="check-container">Mostrar Contraseñas
+      <input type="checkbox" onclick="showPword()">
+      <span class="checkmark"></span>
+    </label>
+
+    <button type="submit">Acceder a la página web</button>
+  </form>
+
+</div>
+
+{% endblock %}
+
+
+{% block extend_footer %}
+
+{% endblock %}

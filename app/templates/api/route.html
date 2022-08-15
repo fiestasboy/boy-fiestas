@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Boy-Fiestas - Ruta</h3>
+
+<div class="container">
+
+    <label for="id-google-address-a">Dirección de partida</label>
+    <input type="text" placeholder="*Comience a escribir la dirección" id="id-google-address-a" name="google_address_a">
+
+    <label for="id-google-address-c">Punto de ruta 1</label>
+    <input type="text" placeholder="*Comience a escribir la dirección" id="id-google-address-c" name="google_address_c">
+
+    <label for="id-google-address-d">Punto de ruta 2</label>
+    <input type="text" placeholder="*Comience a escribir la dirección" id="id-google-address-d" name="google_address_d">
+
+    <label for="id-google-address-b">Dirección del destino</label>
+    <input type="text" placeholder="*Comience a escribir la dirección" id="id-google-address-b" name="google_address_b">
+
+
+
+
+    <input type="hidden" class="geo" id="id-lat-a" value="">
+    <input type="hidden" class="geo" id="id-long-a" value="">
+    <input type="hidden" class="geo" id="id-lat-b" value="">
+    <input type="hidden" class="geo" id="id-long-b" value="">
+    <input type="hidden" class="geo" id="id-lat-c" value="">
+    <input type="hidden" class="geo" id="id-long-c" value="">
+    <input type="hidden" class="geo" id="id-lat-d" value="">
+    <input type="hidden" class="geo" id="id-long-d" value="">
+
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+<script type="text/javascript">
+
+    var google_api_key = "{{google_api_key|safe}}";
+    var base_country = "{{base_country|safe}}";
+
+</script>
+
+<script src="{% static 'assets/js/google_places_waypoints.js' %}"></script>
+
+
+{% endblock %}

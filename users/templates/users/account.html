@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Boy-Fiestas - Cuenta de Usuario</h3>
+
+<div class="container">
+
+    <h4>Datos de la cuenta de usuario</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nombre de Usuario</td>
+                <td>{{request.user.nombre_de_usuario}}</td>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td>{{request.user.nombre|title}} {{request.user.apellidos|title}}</td>
+            </tr>
+
+
+            {% if request.user.userprofile.has_profile %}
+
+            <tr>
+                <td>Dirección</td>
+                <td>
+                    <address>
+                        {{request.user.userprofile.direccion}}<br>
+                        {{request.user.userprofile.ciudad}}<br>
+                        {{request.user.userprofile.departamento}}<br>
+                        {{request.user.userprofile.codigo_postal}}<br>
+                    </address>
+                </td>
+            </tr>
+
+            {% else %}
+            <tr>
+                <td>Perfil del Usuario</td>
+                <td><a href="{% url 'users:profile' %}">Crear un perfil de usuario</a></td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+{% block extend_footer %}
+
+{% endblock %}
