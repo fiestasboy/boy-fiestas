@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
     'app',
+    'users',
     # django-allauth apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google', # Google OAuth 2.0
+    'allauth.socialaccount.providers.google',  # Google OAuth 2.0
 ]
 
 MIDDLEWARE = [
@@ -63,7 +65,7 @@ ROOT_URLCONF = 'boyFiestas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['app/templates', 'users/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,7 +132,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'app/static')
+    os.path.join(BASE_DIR, 'app/static'),
+    os.path.join(BASE_DIR, 'users/static'),
 ]
 
 STATIC_URL = '/static/'
@@ -152,10 +155,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'users:sign-in'
+LOGIN_REDIRECT_URL = 'users:account'
+LOGOUT_REDIRECT_URL = 'users:sign-in'
+
+BASE_COUNTRY = 'CO'
+
 # Configuraciones adicionales
 SOCIALACCOUNT_QUERY_EMAIL = True
-ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 
