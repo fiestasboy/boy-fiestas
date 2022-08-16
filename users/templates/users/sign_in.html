@@ -15,11 +15,11 @@
 
   <form id="signinform" method="POST" action="/sign-in">
     {% csrf_token %}
-    <label for="nombre_de_usuario">Nombre de Usuario</label>
-    {{form.nombre_de_usuario}}
+    <label for="username">Nombre de Usuario</label>
+    {{form.username}}
 
-    <label for="contraseña">Contraseña</label>
-    {{form.contraseña}}
+    <label for="password">Contraseña</label>
+    {{form.password}}
 
     <label class="check-container">Mostrar Contraseñas
       <input type="checkbox" onclick="showPword()">

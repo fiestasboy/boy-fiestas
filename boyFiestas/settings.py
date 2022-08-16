@@ -147,9 +147,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
 GOOGLE_API_KEY = config('GOOGLE_API_KEY')
 
-RECAPTCHA_KEY = config('RECAPTCHA_KEY')
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
 
-RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
 
 
 # Default primary key field type
@@ -163,7 +163,7 @@ LOGIN_URL = 'users:sign-in'
 LOGIN_REDIRECT_URL = 'users:account'
 LOGOUT_REDIRECT_URL = 'users:sign-in'
 
-BASE_COUNTRY = 'CO'
+BASE_COUNTRY = 'UK'
 
 # Configuraciones adicionales
 SOCIALACCOUNT_QUERY_EMAIL = True

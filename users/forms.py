@@ -13,12 +13,12 @@ class UserForm(UserCreationForm):
 		widget=forms.TextInput(attrs={'placeholder': '*Tu nombre..'}))
 	apellidos = forms.CharField(max_length=30, required=True,
 		widget=forms.TextInput(attrs={'placeholder': '*Tus apellidos..'}))
-	nombre_de_usuario = forms.EmailField(max_length=254, required=True,
+	username = forms.EmailField(max_length=254, required=True,
 		widget=forms.TextInput(attrs={'placeholder': '*Correo electrónico..'}))
-	contraseña1 = forms.CharField(
-		widget=forms.PasswordInput(attrs={'placeholder': '*Contraseña..','class':'contraseña'}))
-	contraseña2 = forms.CharField(
-		widget=forms.PasswordInput(attrs={'placeholder': '*Confirmar Contraseña..','class':'contraseña'}))
+	password1 = forms.CharField(
+		widget=forms.PasswordInput(attrs={'placeholder': '*Contraseña..','class':'password'}))
+	password2 = forms.CharField(
+		widget=forms.PasswordInput(attrs={'placeholder': '*Confirmar Contraseña..','class':'password'}))
 
 	#reCAPTCHA token
 	token = forms.CharField(
@@ -26,21 +26,21 @@ class UserForm(UserCreationForm):
 
 	class Meta:
 		model = User
-		fields = ('nombre_de_usuario', 'nombre', 'apellidos', 'contraseña1', 'contraseña2', )
+		fields = ('username', 'nombre', 'apellidos', 'password1', 'password2', )
 
 
 class AuthForm(AuthenticationForm):
 	'''
 	Formulario que utiliza el AuthenticationForm incorporado para gestionar la autentificación de los usuarios.
 	'''
-	nombre_de_usuario = forms.EmailField(max_length=254, required=True,
+	username = forms.EmailField(max_length=254, required=True,
 		widget=forms.TextInput(attrs={'placeholder': '*Correo electrónico..'}))
-	contraseña = forms.CharField(
-		widget=forms.PasswordInput(attrs={'placeholder': '*Contraseña..','class':'contraseña'}))
+	password = forms.CharField(
+		widget=forms.PasswordInput(attrs={'placeholder': '*Contraseña..','class':'password'}))
 
 	class Meta:
 		model = User
-		fields = ('nombre_de_usuario','contraseña', )
+		fields = ('username','password', )
 
 
 class UserProfileForm(forms.ModelForm):

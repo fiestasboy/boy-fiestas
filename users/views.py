@@ -47,13 +47,13 @@ def profile_view(request):
 
 	form = UserProfileForm(instance = up) 
 
-	if request.is_ajax():
+	if request.headers.get('x-requested-with') == 'XMLHttpRequest':
 		form = UserProfileForm(data = request.POST, instance = up)
 		if form.is_valid():
 			obj = form.save()
 			obj.has_profile = True
 			obj.save()
-			result = "Exitoso"
+			result = "Success"
 			message = "Su perfil ha sido actualizado"
 		else:
 			message = FormErrors(form)
@@ -88,12 +88,12 @@ class SignUpView(AjaxFormMixin, FormView):
 	#over write the mixin logic to get, check and save reCAPTURE score
 	def form_valid(self, form):
 		response = super(AjaxFormMixin, self).form_valid(form)	
-		if self.request.is_ajax():
+		if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
 			token = form.cleaned_data.get('token')
 			captcha = reCAPTCHAValidation(token)
 			if captcha["success"]:
 				obj = form.save()
-				obj.email = obj.nombre_de_usuario
+				obj.correo = obj.username
 				obj.save()
 				up = obj.userprofile
 				up.captcha_score = float(captcha["score"])
@@ -102,7 +102,7 @@ class SignUpView(AjaxFormMixin, FormView):
 				login(self.request, obj, backend='django.contrib.auth.backends.ModelBackend')
 
 				#change result & message on success
-				result = "Exitoso"
+				result = "Success"
 				message = "Gracias por registrarte"
 
 				
@@ -125,14 +125,14 @@ class SignInView(AjaxFormMixin, FormView):
 
 	def form_valid(self, form):
 		response = super(AjaxFormMixin, self).form_valid(form)	
-		if self.request.is_ajax():
-			nombre_de_usuario = form.cleaned_data.get('nombre_de_usuario')
-			contraseña = form.cleaned_data.get('contraseña')
+		if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
 			#Intento de autentificar al usuario.
-			user = authenticate(self.request, nombre_de_usuario=nombre_de_usuario, contraseña=contraseña)
+			user = authenticate(self.request, username=username, password=password)
 			if user is not None:
 				login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
-				result = "Exitoso"
+				result = "Success"
 				message = 'Ya has iniciado sesión'
 			else:
 				message = FormErrors(form)

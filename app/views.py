@@ -18,7 +18,7 @@ def route(request):
 	context = {
 	"google_api_key": settings.GOOGLE_API_KEY,
 	"base_country": settings.BASE_COUNTRY}
-	return render(request, 'main/route.html', context)
+	return render(request, 'api/route.html', context)
 
 
 '''
@@ -49,7 +49,7 @@ def map(request):
 			long_d=long_d
 			)
 	else:
-		return redirect(reverse('api:route'))
+		return redirect(reverse('app:route'))
 
 	context = {
 	"google_api_key": settings.GOOGLE_API_KEY,

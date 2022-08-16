@@ -53,14 +53,14 @@ class AjaxFormMixin(object):
 
 	def form_invalid(self, form):
 		response = super(AjaxFormMixin, self).form_invalid(form)
-		if self.request.is_ajax():
+		if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
 			message = FormErrors(form)
 			return JsonResponse({'result':'Error', 'message': message})
 		return response
 
 	def form_valid(self, form):
 		response = super(AjaxFormMixin, self).form_valid(form)
-		if self.request.is_ajax():
+		if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
 			form.save()
 			return JsonResponse({'result':'Success', 'message': ""})
 		return response

@@ -15,7 +15,7 @@
 <div class="container">
 
 
-  <form id="signupform" method="POST" action="/sign-up">
+  <form id="signupform" method="POST" action="sign-up">
     {% csrf_token %}
 
 
@@ -25,18 +25,18 @@
     <label for="apellidos">Apellidos</label>
     {{form.apellidos}}
 
-    <label for="nombre_de_usuario">Nombre de Usuario</label>
-    {{form.nombre_de_usuario}}
+    <label for="username">Nombre de Usuario</label>
+    {{form.username}}
 
-    <label for="contraseña1">Contraseña</label>
-    {{form.contraseña1}}
+    <label for="password1">Contraseña</label>
+    {{form.password1}}
 
-    <label for="contraseña2">Confirmar contraseña</label>
-    {{form.contraseña2}}
+    <label for="password2">Confirmar password</label>
+    {{form.password2}}
 
     {{form.token}}
 
-    <label class="check-container">Mostrar contraseñas
+    <label class="check-container">Mostrar passwords
       <input type="checkbox" onclick="showPword()">
       <span class="checkmark"></span>
     </label>

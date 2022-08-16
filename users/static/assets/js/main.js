@@ -42,12 +42,12 @@ function ShowAlert(title, message, type, redirect) {
 }
 
 function showPword() {
-  var x = document.getElementsByClassName("contraseña");
+  var x = document.getElementsByClassName("password");
   for (let i = 0; i < x.length; i++) {
-    if (x[i].type === "contraseña") {
+    if (x[i].type === "password") {
       x[i].type = "text";
     } else {
-      x[i].type = "contraseña";
+      x[i].type = "password";
     }
   }
 }
@@ -90,7 +90,7 @@ var FormControls = (function () {
               data: formdata,
               success: function (json) {
                 CustomFormSubmitResponse($("#signupform button[type=submit]"));
-                if (json["result"] == "Exitoso") {
+                if (json["result"] == "Success") {
                   var redirect = "/";
                 } else {
                   var redirect = false;
@@ -131,7 +131,7 @@ var FormControls = (function () {
         data: formdata,
         success: function (json) {
           CustomFormSubmitResponse($("#signinform button[type=submit]"));
-          if (json["result"] == "Exitoso") {
+          if (json["result"] == "Success") {
             var redirect = "/";
           } else {
             var redirect = false;
@@ -170,7 +170,7 @@ var FormControls = (function () {
         data: formdata,
         success: function (json) {
           CustomFormSubmitResponse($("#profileform button[type=submit]"));
-          if (json["result"] == "Exitoso") {
+          if (json["result"] == "Success") {
             var redirect = "/";
           } else {
             var redirect = false;

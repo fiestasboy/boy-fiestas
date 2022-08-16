@@ -13,15 +13,15 @@
     {% endif %}
 
     {% if "route" in request.path %}
-    <li><a class="active" href="{% url 'api:route' %}">Ruta</a></li>
+    <li><a class="active" href="{% url 'app:route' %}">Ruta</a></li>
     {% else %}
-    <li><a href="{% url 'api:route' %}">Ruta</a></li>
+    <li><a href="{% url 'app:route' %}">Ruta</a></li>
     {% endif %}
 
     {% if "map" in request.path %}
-    <li><a class="active" href="{% url 'api:map' %}">Mapa</a></li>
+    <li><a class="active" href="{% url 'app:map' %}">Mapa</a></li>
     {% else %}
-    <li><a href="{% url 'api:map' %}">Mapa</a></li>
+    <li><a href="{% url 'app:map' %}">Mapa</a></li>
     {% endif %}
 
     {% if "sign-out" in request.path %}
