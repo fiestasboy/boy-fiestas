@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name id="viewportid_"="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -14,21 +14,20 @@
   </head>
   <body>
   
-    <div class="container">
+    <div class="container sign-up-mode">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="sign_in/" method="POST" class="sign-in-form">
-            {% csrf_token %}
+          <form action="" class="sign-in-form">
            
             <h2 class="title">Iniciar sesion</h2>
             
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="username" placeholder="Usuario" />
+              <input type="text" placeholder="Usuario" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name="password" placeholder="Contraseña" />
+              <input type="password" placeholder="Contraseña" />
             </div>
             <input type="submit" value="Acceder" class="btn solid" />
             <p class="social-text">O inicia sesión con plataformas sociales</p>
@@ -46,20 +45,20 @@
             </div>
            
           </form>
-          <form action="sign_up/" method="POST" class="sign-up-form">
+          <form action="/users/sign_up" method="post" class="sign-up-form">
             {% csrf_token %}
             <h2 class="title">Registrate</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="username" placeholder="Nombre de usuario" />
+              <input type="text" id="id_username" name="username" placeholder="Nombre de usuario" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" name="email" placeholder="Correo" />
+              <input type="email" id="id_email" name="email" placeholder="Correo" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name="password" placeholder="Contraseña" />
+              <input type="password" id="id_password" name="password" placeholder="Contraseña" />
             </div>
             <input type="submit" class="btn" value="Acceder" />
             <p class="social-text">O regístrate con plataformas sociales</p>
@@ -102,9 +101,11 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
               laboriosam ad deleniti.
             </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Iniciar sesion
-            </button>
+            <a href="/users/sign_in">
+              <button class="btn transparent" id="sign-in-btn">
+                Iniciar sesion
+              </button>
+            </a>
             <div style="margin-top: 5%; margin-left: 40%;">
              
               <a href="/" class="social-icon">
@@ -126,6 +127,6 @@
 
     </div>
 
-    <script src="{% static 'assets/js/app.js' %}"></script>
+    <!-- <script src="{% static 'assets/js/app.js' %}"></script> -->
   </body>
 </html>
