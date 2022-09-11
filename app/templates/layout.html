@@ -5,16 +5,19 @@
 
 <body>
 
-    {% include 'partial/header.html' %}
+    
     <main>
         {% block main %}
         {% endblock %}
     </main>
     {% include 'partial/footer.html' %}
 
-    <script src="{% static 'assets/js/script2.js' %}"></script>
- 
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    
+    <script src="{% static 'assets\js\jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.backstretch.min.js' %}"></script>
+    <script src="{% static 'assets\js\templatemo-script.js' %}"></script>
+    
 </body>
 
 </html>
