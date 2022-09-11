@@ -12,17 +12,17 @@ def sign_up(request):
         password = request.POST['password']
 
         if User.objects.filter(username=username).exists():
-            messages.info(request, 'Username is already taken')
-            return redirect('/users/sign_up')
+            messages.info(request, 'Nombre de usuario ya está en uso')
+            return redirect('/login')
         elif User.objects.filter(email=email).exists():
-            messages.info(request, 'Email is already taken')
-            return redirect('/users/sign_up')
+            messages.info(request, 'Correo ya está en uso')
+            return redirect('/login')
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
             user.save()
-            return redirect('/users/sign_in')
+            return redirect('/')
     else:
-        return render(request, 'sign_up.html')
+        return render(request, 'login.html')
 
 def sign_in(request):
     if request.method == 'POST':
@@ -35,10 +35,10 @@ def sign_in(request):
             auth.login(request, user)
             return redirect('/')
         else:
-            messages.info(request, 'Invalid Username or Password')
-            return redirect('users/sign_in')
+            messages.info(request, 'Nombre de usuario o contraseña inválido')
+            return redirect('/login')
     else:
-        return render(request, 'sign_in.html')
+        return render(request, 'login.html')
 
 def logout_user(request):
     auth.logout(request)
