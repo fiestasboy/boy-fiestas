@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 
 def login(request):
-    return render(request, "login.html")
+    return render(request, "users/login.html")
  
 def sign_up(request):
     if request.method == 'POST':
