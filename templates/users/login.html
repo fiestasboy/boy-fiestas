@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,14 +43,12 @@
               <i class="fab fa-facebook-f"></i>
             </a>
 
-            </a>
-            <a href="#" class="social-icon">
+            <a arial-hidden="true" href="{% provider_login_url 'google' %}" class="social-icon">
               <i class="fab fa-google"></i>
             </a>
 
-
           </div>
-
+          
         </form>
         <form action="/sign_up" method="post" class="sign-up-form">
           {% csrf_token %}
