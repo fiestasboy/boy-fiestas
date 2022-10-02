@@ -18,9 +18,13 @@ def sign_up(request):
             messages.info(request, 'Correo ya está en uso')
             return redirect('/login')
         else:
-            user = User.objects.create_user(username=username, password=password, email=email)
-            user.save()
-            return redirect('/')
+            try:
+                user = User.objects.create_user(username=username, password=password, email=email)
+                user.save()
+                return redirect('/')
+            except:
+                messages.info(request, 'Ingresa datos válidos por favor')
+                return redirect('/login')
     else:
         return render(request, 'login.html')
 
