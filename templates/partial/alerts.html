@@ -1,0 +1,27 @@
+<div class="form-group">
+    {% for message in messages %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if message.tags == 'success' %}
+        <script>
+            var x = '{{ message }}';
+            swal('¡Perfecto!', x, 'success')
+        </script>
+        {% elif message.tags == 'warning' %}
+        <script>
+            var x = '{{ message }}';
+            swal('¡Atención!', x, 'warning')
+        </script>
+        {% elif message.tags == 'info' %}
+        <script>
+            var x = '{{ message }}';
+            swal('Información', x, 'info')
+        </script>
+        {% elif message.tags == 'error' %}
+        <script>
+            var x = '{{ message }}';
+            swal('¡Error!', x, 'error')
+        </script>
+        {% endif %}
+
+    {% endfor %}
+</div>
