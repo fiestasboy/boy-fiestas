@@ -1,0 +1,18 @@
+{% load static %}
+<div class="form-group">
+    {% for message in messages %}
+    <script src="{% static 'vendor/sweetalert/js/sweetalert.min.js' %}"></script>
+
+    <script>
+        swal({
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+            text: ' ',
+            timer: 2350,
+            buttons: false
+        })
+    </script>
+
+    {% endfor %}
+
+</div>
