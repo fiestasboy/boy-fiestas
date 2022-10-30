@@ -28,6 +28,7 @@ jobs:
     - name: Run Tests
       env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: ${{ secrets.DEBUG }}
           ENGINE: ${{ secrets.ENGINE }}
           NAME: ${{ secrets.NAME }}
           USER: ${{ secrets.USER }}
